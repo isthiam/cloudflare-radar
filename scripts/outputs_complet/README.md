@@ -1,7 +1,7 @@
 # Téléchargement Cloudflare Radar — Récapitulatif
 
 **Date :** 09 juin 2026  
-**Auteur :** Issakha Thiam (Université Clermont Auvergne)  
+**Auteur :** Issakha Thiam  
 **Script :** `radar_complet_download.py`
 
 ---

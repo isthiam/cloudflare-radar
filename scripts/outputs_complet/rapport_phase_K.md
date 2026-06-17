@@ -1,6 +1,6 @@
 # Rapport Phase K — Analyse de Graphe Réseau ASN
 **Cloudflare Radar Dataset — Déc. 2025 / Juin 2026**  
-**Chercheur :** Issakha Thiam — Université Clermont Auvergne  
+**Auteur :** Issakha Thiam  
 **Généré le :** 2026-06-16 22:23:23
 
 ---

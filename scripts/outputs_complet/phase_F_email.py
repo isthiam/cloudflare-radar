@@ -280,7 +280,7 @@ lines = []
 
 lines.append("# Rapport Phase F — Analyse Sécurité Email (DMARC/DKIM/SPF/SPAM/SPOOF/MALICIOUS)")
 lines.append("**Cloudflare Radar Dataset — Juin 2025 / Juin 2026**  ")
-lines.append("**Chercheur :** Issakha Thiam — Université Clermont Auvergne  ")
+lines.append("**Auteur :** Issakha Thiam  ")
 lines.append(f"**Généré le :** {ts}")
 lines.append("")
 lines.append("---")

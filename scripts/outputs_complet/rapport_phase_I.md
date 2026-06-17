@@ -1,6 +1,6 @@
 # Rapport Phase I — Clustering et Segmentation Géographique
 **Cloudflare Radar Dataset — Juin 2025 / Juin 2026**  
-**Chercheur :** Issakha Thiam — Université Clermont Auvergne  
+**Auteur :** Issakha Thiam  
 **Généré le :** 2026-06-16 22:17:38
 
 ---

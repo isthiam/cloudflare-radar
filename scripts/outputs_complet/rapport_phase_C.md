@@ -1,6 +1,6 @@
 # Rapport Phase C — Analyse Temporelle (Séries Chronologiques)
 **Cloudflare Radar Dataset — Juin 2025 / Juin 2026**  
-**Chercheur :** Issakha Thiam — Université Clermont Auvergne  
+**Auteur :** Issakha Thiam  
 **Généré le :** 2026-06-16 13:01:16
 
 ---

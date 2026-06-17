@@ -2,7 +2,7 @@
 ## Analyse Complète de la Sécurité Internet (Cloudflare Radar)
 
 **Cloudflare Radar Dataset — Juin 2025 / Juin 2026**  
-**Chercheur :** Issakha Thiam — Université Clermont Auvergne  
+**Auteur :** Issakha Thiam  
 **Généré le :** 2026-06-17 10:06:46
 
 ---
@@ -318,4 +318,4 @@ La priorité absolue est l'accélération du déploiement RPKI/ROV et le renforc
 ---
 *Rapport de synthèse généré le 2026-06-17 10:06:46 par `phase_L_synthese.py`.*  
 *Projet : Analyse de sécurité internet — Cloudflare Radar API v4.*  
-*Université Clermont Auvergne — Issakha Thiam.*
+*Issakha Thiam — Issakha.THIAM@uca.fr*

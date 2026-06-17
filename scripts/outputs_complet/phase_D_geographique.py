@@ -283,7 +283,7 @@ ts = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 lines.append("# Rapport Phase D — Analyse Géographique (252 Pays)")
 lines.append("**Cloudflare Radar Dataset — Juin 2025 / Juin 2026**  ")
-lines.append("**Chercheur :** Issakha Thiam — Université Clermont Auvergne  ")
+lines.append("**Auteur :** Issakha Thiam  ")
 lines.append(f"**Généré le :** {ts}")
 lines.append("")
 lines.append("---")

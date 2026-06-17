@@ -1,6 +1,6 @@
 # Rapport Phase G — Analyse BGP Hijacks & Leaks
 **Cloudflare Radar Dataset — Déc. 2025 / Juin 2026**  
-**Chercheur :** Issakha Thiam — Université Clermont Auvergne  
+**Auteur :** Issakha Thiam  
 **Généré le :** 2026-06-16 16:22:07
 
 ---

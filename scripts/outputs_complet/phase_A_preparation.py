@@ -1,7 +1,7 @@
 """
 Phase A — Préparation et qualité des données
 Cloudflare Radar Dataset — juin 2025 / juin 2026
-Chercheur : Issakha Thiam — Université Clermont Auvergne
+Auteur    : Issakha Thiam
 """
 
 import pandas as pd
@@ -523,7 +523,7 @@ W = lines.append
 
 W("# Rapport Phase A — Préparation et Qualité des Données")
 W(f"**Cloudflare Radar Dataset — Juin 2025 / Juin 2026**  ")
-W(f"**Chercheur :** Issakha Thiam — Université Clermont Auvergne  ")
+W(f"**Auteur :** Issakha Thiam  ")
 W(f"**Généré le :** {NOW}  ")
 W(f"**Python :** {PY_VERSION} | pandas 2.2.3 | numpy 2.2.4")
 W("")

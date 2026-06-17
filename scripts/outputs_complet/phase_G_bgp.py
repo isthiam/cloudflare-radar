@@ -247,7 +247,7 @@ lines = []
 
 lines.append("# Rapport Phase G — Analyse BGP Hijacks & Leaks")
 lines.append("**Cloudflare Radar Dataset — Déc. 2025 / Juin 2026**  ")
-lines.append("**Chercheur :** Issakha Thiam — Université Clermont Auvergne  ")
+lines.append("**Auteur :** Issakha Thiam  ")
 lines.append(f"**Généré le :** {ts}")
 lines.append("")
 lines.append("---")

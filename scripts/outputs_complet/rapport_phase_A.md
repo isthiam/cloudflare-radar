@@ -1,6 +1,6 @@
 # Rapport Phase A — Préparation et Qualité des Données
 **Cloudflare Radar Dataset — Juin 2025 / Juin 2026**  
-**Chercheur :** Issakha Thiam — Université Clermont Auvergne  
+**Auteur :** Issakha Thiam  
 **Généré le :** 2026-06-16 12:40:44  
 **Python :** 3.13 | pandas 2.2.3 | numpy 2.2.4
 

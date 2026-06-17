@@ -312,7 +312,7 @@ lines = []
 
 lines.append("# Rapport Phase J — Détection d'Anomalies Consolidée")
 lines.append("**Cloudflare Radar Dataset — Juin 2025 / Juin 2026**  ")
-lines.append("**Chercheur :** Issakha Thiam — Université Clermont Auvergne  ")
+lines.append("**Auteur :** Issakha Thiam  ")
 lines.append(f"**Généré le :** {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
 lines.append("")
 lines.append("---")

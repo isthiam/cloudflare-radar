@@ -1,6 +1,6 @@
 # Rapport Phase E — Analyse Détaillée des Attaques L3 & L7
 **Cloudflare Radar Dataset — Juin 2025 / Juin 2026**  
-**Chercheur :** Issakha Thiam — Université Clermont Auvergne  
+**Auteur :** Issakha Thiam  
 **Généré le :** 2026-06-16 15:53:24
 
 ---

@@ -2,7 +2,7 @@
 ## Cloudflare Radar — Dataset Vulnérabilités Internet (juin 2025 – juin 2026)
 
 **Périmètre :** 25 fichiers CSV, ~2,9M points de données, 7 catégories thématiques, 253 pays, 52 semaines  
-**Chercheur :** Issakha Thiam — Université Clermont Auvergne  
+**Auteur :** Issakha Thiam  
 **Date de collecte :** 9 juin 2026  
 **Source :** Cloudflare Radar API v4
 

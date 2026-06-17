@@ -1,6 +1,6 @@
 # Rapport Phase D — Analyse Géographique (252 Pays)
 **Cloudflare Radar Dataset — Juin 2025 / Juin 2026**  
-**Chercheur :** Issakha Thiam — Université Clermont Auvergne  
+**Auteur :** Issakha Thiam  
 **Généré le :** 2026-06-16 15:21:29
 
 ---

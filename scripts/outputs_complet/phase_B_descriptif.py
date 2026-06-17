@@ -1,7 +1,7 @@
 """
 Phase B — Statistiques Descriptives Globales
 Cloudflare Radar Dataset — Juin 2025 / Juin 2026
-Chercheur : Issakha Thiam — Université Clermont Auvergne
+Auteur    : Issakha Thiam
 """
 
 import pandas as pd
@@ -95,7 +95,7 @@ def w(line=""):
 # ═══════════════════════════════════════════════════════════════════════════════
 w("# Rapport Phase B — Statistiques Descriptives Globales")
 w(f"**Cloudflare Radar Dataset — Juin 2025 / Juin 2026**  ")
-w(f"**Chercheur :** Issakha Thiam — Université Clermont Auvergne  ")
+w(f"**Auteur :** Issakha Thiam  ")
 w(f"**Généré le :** {NOW}  ")
 w(f"**Données source :** répertoire `cleaned/` (25 fichiers CSV nettoyés — Phase A)")
 w()
