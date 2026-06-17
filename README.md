@@ -163,9 +163,13 @@ python etude4_cascade.py
 
 ## Licence
 
-Ce projet est distribué sous licence **MIT** pour le code, et **Creative Commons CC BY 4.0** pour les rapports et figures.
+Ce projet est distribué sous licence **[Open Data Commons Attribution License (ODC-By) v1.0](https://opendatacommons.org/licenses/by/1-0/)**.
 
-Les données Cloudflare Radar sont soumises aux [Conditions d'utilisation de Cloudflare](https://www.cloudflare.com/terms/).
+Vous êtes libre de partager, modifier et utiliser les données et analyses, à condition de citer la source :
+
+> "Contains information from *Cloudflare Radar Security Dataset 2025–2026* by Issakha Thiam, available under ODC-By 1.0 — https://opendatacommons.org/licenses/by/1-0/"
+
+Les données Cloudflare Radar sont également soumises aux [Conditions d'utilisation de Cloudflare](https://www.cloudflare.com/terms/).
 
 ---
 
