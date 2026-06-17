@@ -1,0 +1,59 @@
+# === SECRETS — NE JAMAIS PUBLIER ===
+radar_cle_api.txt
+.env
+*.key
+*token*
+*secret*
+*credential*
+
+# === Environnements Python ===
+venv/
+.venv/
+env/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# === Node.js ===
+scripts/outputs_complet/node_modules/
+node_modules/
+package-lock.json
+scripts/outputs_complet/package-lock.json
+scripts/outputs_complet/package.json
+
+# === Fichiers temporaires / IDE ===
+.idea/
+.vscode/
+*.swp
+*.swo
+Thumbs.db
+.DS_Store
+
+# === Logs et journaux de session ===
+scripts/outputs_complet/journal_session.md
+scripts/outputs_complet/activity_log.jsonl
+*.log
+
+# === Claude (hooks internes) ===
+scripts/outputs_complet/.claude/
+.claude/
+
+# === Données brutes volumineuses (conserver dans cleaned/) ===
+data/
+outputs_outages/
+outputs_outages_iso2/
+outputs_outage_center/
+outputs_world/
+radar_http_version_simple/
+cloudflare-radar_outages_worldwide_*.csv
+
+# === Fichiers intermédiaires d'analyse ===
+scripts/outputs_complet/etude1_pays.csv
+scripts/outputs_complet/etude1_regions.csv
+scripts/outputs_complet/etude2_indices.csv
+scripts/outputs_complet/etude8_pays_gdp.csv
+scripts/outputs_complet/etude8_wb_data.csv
+scripts/outputs_complet/etude9_clusters.csv
+scripts/outputs_complet/etude10_iqi_gdp.csv
