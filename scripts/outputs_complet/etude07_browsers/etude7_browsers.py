@@ -2,13 +2,15 @@
 import pandas as pd
 import numpy as np
 import matplotlib
+import os; os.chdir(os.path.dirname(os.path.abspath(__file__)))
+
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import warnings
 warnings.filterwarnings('ignore')
 from scipy.stats import mannwhitneyu, spearmanr
 
-BASE = r'E:\Webscraping\cloudflare_radar_vulnerabilite\scripts\outputs_complet\cleaned'
+BASE = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'cleaned')
 
 # Dates releases Chrome (cycle 4 semaines environ)
 chrome_releases = [

@@ -11,7 +11,7 @@ from scipy import stats as sps
 import warnings, os
 warnings.filterwarnings("ignore")
 
-CLEANED = os.path.join(os.path.dirname(__file__), "cleaned")
+CLEANED = os.path.join(os.path.dirname(__file__), "..", "cleaned")
 OUT = os.path.dirname(__file__)
 
 def load(name):
@@ -21,7 +21,7 @@ def load(name):
 
 print("Chargement...")
 # Charger les données IEC/IExC de l'étude 11
-iec_file = os.path.join(OUT, "etude11_pays_semaine_vulnerabilite.csv")
+iec_file = os.path.join(os.path.dirname(__file__), "..", "etude11_vulnerabilite_pays", "etude11_pays_semaine_vulnerabilite.csv")
 if not os.path.exists(iec_file):
     raise FileNotFoundError(f"Fichier introuvable : {iec_file}\nExécutez d'abord etude11_vulnerabilite_pays.py")
 

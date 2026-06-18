@@ -2,6 +2,8 @@
 import pandas as pd
 import numpy as np
 import matplotlib
+import os; os.chdir(os.path.dirname(os.path.abspath(__file__)))
+
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import warnings
@@ -9,7 +11,7 @@ warnings.filterwarnings('ignore')
 from scipy.stats import spearmanr, kruskal
 import requests
 
-BASE = r'E:\Webscraping\cloudflare_radar_vulnerabilite\scripts\outputs_complet\cleaned'
+BASE = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'cleaned')
 
 GDP_FALLBACK = {
     'US':76329,'CA':53247,'GB':45295,'DE':48717,'FR':43510,'AU':65099,

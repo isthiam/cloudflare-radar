@@ -18,7 +18,7 @@ import os
 
 warnings.filterwarnings("ignore")
 
-CLEANED = os.path.join(os.path.dirname(__file__), "cleaned")
+CLEANED = os.path.join(os.path.dirname(__file__), "..", "cleaned")
 OUT = os.path.dirname(__file__)
 PYTHON = "C:/Users/issthiam/AppData/Local/Programs/Python/Python313/python.exe"
 
@@ -192,7 +192,7 @@ cols_export = [
     "IEC", "IExC", "IVC2"
 ]
 cols_export = [c for c in cols_export if c in base.columns]
-out_csv = os.path.join(OUT, "etude11_pays_semaine_vulnerabilite.csv")
+out_csv = os.path.join(os.path.dirname(__file__), "..", "etude11_vulnerabilite_pays", "etude11_pays_semaine_vulnerabilite.csv")
 base[cols_export].to_csv(out_csv, index=False)
 print(f"CSV exporté : {out_csv}  ({len(base):,} lignes, {base['country_iso2'].nunique()} pays)")
 

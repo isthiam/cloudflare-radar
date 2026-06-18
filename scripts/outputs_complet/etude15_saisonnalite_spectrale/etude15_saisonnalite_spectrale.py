@@ -8,7 +8,7 @@ from scipy.fft import rfft, rfftfreq
 import warnings, os
 warnings.filterwarnings("ignore")
 
-CLEANED = os.path.join(os.path.dirname(__file__), "cleaned")
+CLEANED = os.path.join(os.path.dirname(__file__), "..", "cleaned")
 OUT = os.path.dirname(__file__)
 
 def load(name):

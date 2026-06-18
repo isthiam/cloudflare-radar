@@ -48,80 +48,14 @@ cloudflare-radar/
     │
     └── outputs_complet/                 # ════ ANALYSE PRINCIPALE ════
         │
-        ├── ── Phases d'analyse A→L ──────────────────────────────────
-        ├── phase_A_preparation.py           # Collecte et nettoyage des données
-        ├── phase_B_descriptif.py            # Statistiques descriptives
-        ├── phase_C_temporel.py              # Analyse temporelle (Mann-Kendall, ADF)
-        ├── phase_D_geographique.py          # Analyse géographique (252 pays)
-        ├── phase_E_attaques.py              # Attaques L3/L7
-        ├── phase_F_email.py                 # Sécurité email (DMARC/DKIM/SPF)
-        ├── phase_G_bgp.py                   # BGP hijacking et leaks
-        ├── phase_H_correlations.py          # Corrélations et causalité de Granger
-        ├── phase_I_clustering.py            # Clustering pays (k-Means)
-        ├── phase_J_anomalies.py             # Détection d'anomalies
-        ├── phase_K_network.py               # Analyse réseau (graphes ASN)
-        ├── phase_L_synthese.py              # Synthèse finale
-        ├── rapport_phase_[A-L].md           # 12 rapports de phases
-        │
-        ├── ── Études thématiques 1→11 ───────────────────────────────
-        ├── etude1_geopolitique.py           # Disparités régionales TLS/IPv6
-        ├── etude2_prediction.py             # Prédiction ARIMA ISE/IMP/IVC
-        ├── etude3_weekends.py               # Rythmes temporels des attaques
-        ├── etude4_cascade.py                # Effet cascade email→BGP (Granger)
-        ├── etude5_cve.py                    # CVE critiques NVD vs BGP
-        ├── etude6_cisa.py                   # CISA KEV (254 vulnérabilités)
-        ├── etude7_browsers.py               # Impact navigateurs sur protocoles
-        ├── etude8_inegalites.py             # Fracture numérique mondiale
-        ├── etude9_clustering.py             # Clustering k-Means (252 pays)
-        ├── etude10_iqi_proxy.py             # IQI proxy économique (PIB/hab)
-        ├── etude11_vulnerabilite_pays.py    # IEC/IExC — Exposition vs Expérience
-        ├── etude12_convergence_pays.py      # β/σ-convergence Mann-Kendall
-        ├── etude13_bot_vulnerabilite.py     # Trafic bot vs indicateurs sécurité
-        ├── etude14_os_legacy.py             # OS legacy (Windows/Android) vs sécurité
-        ├── etude15_saisonnalite_spectrale.py # FFT + décomposition STL
-        ├── etude16_secteurs_l7.py           # Secteurs ciblés attaques L7
-        ├── etude17_paradoxe_resilience.py   # Régression IExC ~ IEC + contrôles
-        ├── etude18_mobile_desktop.py        # Fracture mobile vs desktop
-        ├── rapport_etude[1-18]_*.md         # 18 rapports d'études
-        │
-        ├── ── Rapports de synthèse ──────────────────────────────────
-        ├── rapport_synthese_10etudes.md/.docx   # ← SYNTHÈSE PRINCIPALE (4 500 mots)
-        ├── rapport_academique.md/.docx/.pdf     # Rapport académique complet
-        ├── doc_technique_indices.md/.docx/.pdf  # Documentation ISE, IMP, IVC
-        │
-        ├── ── Figures (44 PNG) ──────────────────────────────────────
-        ├── etude1_regions_boxplot.png / etude1_heatmap.png
-        ├── etude2_forecast.png
-        ├── etude3_boxplot.png / etude3_timeline.png
-        ├── etude4_cascade.png
-        ├── etude5_cve_vs_bgp.png / etude5_correlation_lags.png
-        ├── etude6_kev_timeline.png / etude6_vendors.png
-        ├── etude7_tls_timeline.png / etude7_http3_browsers.png
-        ├── etude8_scatter_gdp_tls.png / etude8_boxplot_income.png
-        ├── etude9_pca.png / etude9_elbow.png
-        ├── etude10_scatter_iqi_gdp.png
-        ├── etude11_heatmap_iec.png / etude11_heatmap_iexc.png
-        ├── etude11_scatter_iec_iexc.png / etude11_series_globales.png
-        ├── etude12_mk_tendances.png / etude12_beta_convergence.png / etude12_sigma_convergence.png
-        ├── etude13_bot_scatter.png / etude13_bot_classement.png / etude13_bot_timeseries.png
-        ├── etude14_os_corr_heatmap.png / etude14_os_timeseries.png / etude14_windows_tls.png
-        ├── etude15_fft_spectres.png / etude15_series_tendance.png / etude15_residus_saisonniers.png
-        ├── etude16_l7_secteurs_stacked.png / etude16_l7_secteurs_series.png
-        ├── etude16_l7_methodes.png / etude16_l7_barplot.png
-        ├── etude17_paradoxe_iec_iexc.png / etude17_regression_iec_iexc.png / etude17_ols_coefficients.png
-        ├── etude18_mobile_scatter.png / etude18_mobile_boxplot.png / etude18_mobile_top20.png
-        │
-        ├── ── Données nettoyées (25 CSV) ────────────────────────────
-        ├── cleaned/
+        ├── cleaned/                     # ── Données nettoyées (25 CSV) ──────
         │   ├── attacks_l3_bitrate_clean.csv
         │   ├── attacks_l3_ip_version_clean.csv
         │   ├── attacks_l3_protocol_clean.csv
         │   ├── attacks_l7_http_method_clean.csv
         │   ├── attacks_l7_http_version_clean.csv
         │   ├── attacks_l7_vertical_clean.csv
-        │   ├── bgp_hijacks_clean.csv
-        │   ├── bgp_leaks_clean.csv
-        │   ├── bgp_timeseries_clean.csv
+        │   ├── bgp_hijacks_clean.csv / bgp_leaks_clean.csv / bgp_timeseries_clean.csv
         │   ├── dns_timeseries_clean.csv
         │   ├── email_dkim_clean.csv / email_dmarc_clean.csv
         │   ├── email_malicious_clean.csv / email_spam_clean.csv
@@ -130,23 +64,124 @@ cloudflare-radar/
         │   ├── http_device_type_clean.csv / http_http_version_clean.csv
         │   ├── http_ip_version_clean.csv / http_os_clean.csv
         │   ├── http_tls_version_clean.csv
-        │   ├── iqi_bandwidth_clean.csv
-        │   └── iqi_dns_clean.csv
+        │   ├── iqi_bandwidth_clean.csv / iqi_dns_clean.csv
         │
-        ├── ── Données brutes par thème ──────────────────────────────
-        ├── attacks_l3/   # Bitrate, protocole, IP version (3 CSV)
-        ├── attacks_l7/   # Méthode HTTP, vertical, version HTTP (3 CSV)
-        ├── bgp/          # Timeseries, hijacks, leaks (3 CSV)
-        ├── dns/          # DNS timeseries (1 CSV)
-        ├── email/        # DMARC/DKIM/SPF/spam/spoof/malicious (6 CSV)
-        ├── http/         # TLS, IPv6, HTTP/3, OS, navigateurs… (7 CSV, 252 pays)
-        ├── iqi/          # Bande passante et latence DNS (2 CSV, 252 pays)
+        ├── phases/                      # ── Phases d'analyse A→L ────────────
+        │   ├── phase_A_preparation.py   # Collecte et nettoyage des données
+        │   ├── phase_B_descriptif.py    # Statistiques descriptives
+        │   ├── phase_C_temporel.py      # Analyse temporelle (Mann-Kendall, ADF)
+        │   ├── phase_D_geographique.py  # Analyse géographique (252 pays)
+        │   ├── phase_E_attaques.py      # Attaques L3/L7
+        │   ├── phase_F_email.py         # Sécurité email (DMARC/DKIM/SPF)
+        │   ├── phase_G_bgp.py           # BGP hijacking et leaks
+        │   ├── phase_H_correlations.py  # Corrélations et causalité de Granger
+        │   ├── phase_I_clustering.py    # Clustering pays (k-Means)
+        │   ├── phase_J_anomalies.py     # Détection d'anomalies
+        │   ├── phase_K_network.py       # Analyse réseau (graphes ASN)
+        │   ├── phase_L_synthese.py      # Synthèse finale
+        │   └── rapport_phase_[A-L].md   # 12 rapports de phases
         │
-        ├── etude11_pays_semaine_vulnerabilite.csv  # IEC/IExC pays × semaine
-        ├── etude12_convergence_mk.csv              # Mann-Kendall tendances par pays
-        ├── etude13_bot_pays.csv                    # Ratio bot + sécurité par pays
-        ├── etude14_os_pays.csv                     # Parts OS + sécurité par pays
-        └── etude18_mobile_pays.csv                 # Ratio mobile + sécurité par pays
+        ├── synthese/                    # ── Rapports de synthèse ────────────
+        │   ├── rapport_synthese_10etudes.md/.docx   # Synthèse principale
+        │   ├── rapport_academique.md/.docx/.pdf     # Rapport académique
+        │   └── doc_technique_indices.md/.docx/.pdf  # Documentation indices
+        │
+        ├── etude01_geopolitique/        # Disparités régionales TLS/IPv6
+        │   ├── etude1_geopolitique.py
+        │   ├── etude1_regions_boxplot.png / etude1_heatmap.png
+        │   └── rapport_etude1_geopolitique.md/.docx
+        │
+        ├── etude02_prediction/          # Prédiction ARIMA ISE/IMP/IVC
+        │   ├── etude2_prediction.py
+        │   ├── etude2_forecast.png
+        │   └── rapport_etude2_prediction.md/.docx
+        │
+        ├── etude03_weekends/            # Rythmes temporels des attaques
+        │   ├── etude3_weekends.py
+        │   ├── etude3_boxplot.png / etude3_timeline.png
+        │   └── rapport_etude3_weekends.md/.docx
+        │
+        ├── etude04_cascade/             # Effet cascade email→BGP (Granger)
+        │   ├── etude4_cascade.py
+        │   ├── etude4_cascade.png
+        │   └── rapport_etude4_cascade.md/.docx
+        │
+        ├── etude05_cve/                 # CVE critiques NVD vs BGP
+        │   ├── etude5_cve.py
+        │   ├── etude5_cve_vs_bgp.png / etude5_correlation_lags.png
+        │   └── rapport_etude5_cve.md/.docx
+        │
+        ├── etude06_cisa/                # CISA KEV (254 vulnérabilités)
+        │   ├── etude6_cisa.py
+        │   ├── etude6_kev_timeline.png / etude6_vendors.png
+        │   └── rapport_etude6_cisa.md/.docx
+        │
+        ├── etude07_browsers/            # Impact navigateurs sur protocoles
+        │   ├── etude7_browsers.py
+        │   ├── etude7_tls_timeline.png / etude7_http3_browsers.png
+        │   └── rapport_etude7_browsers.md/.docx
+        │
+        ├── etude08_inegalites/          # Fracture numérique mondiale
+        │   ├── etude8_inegalites.py
+        │   ├── etude8_scatter_gdp_tls.png / etude8_boxplot_income.png
+        │   └── rapport_etude8_inegalites.md/.docx
+        │
+        ├── etude09_clustering/          # Clustering k-Means (252 pays)
+        │   ├── etude9_clustering.py
+        │   ├── etude9_pca.png / etude9_elbow.png
+        │   └── rapport_etude9_clustering.md/.docx
+        │
+        ├── etude10_iqi_proxy/           # IQI proxy économique (PIB/hab)
+        │   ├── etude10_iqi_proxy.py
+        │   ├── etude10_scatter_iqi_gdp.png
+        │   └── rapport_etude10_iqi_proxy.md/.docx
+        │
+        ├── etude11_vulnerabilite_pays/  # IEC/IExC — Exposition vs Expérience
+        │   ├── etude11_vulnerabilite_pays.py
+        │   ├── etude11_heatmap_iec.png / etude11_heatmap_iexc.png
+        │   ├── etude11_scatter_iec_iexc.png / etude11_series_globales.png
+        │   ├── etude11_pays_semaine_vulnerabilite.csv
+        │   └── rapport_etude11_vulnerabilite_pays.md
+        │
+        ├── etude12_convergence_pays/    # β/σ-convergence Mann-Kendall
+        │   ├── etude12_convergence_pays.py
+        │   ├── etude12_mk_tendances.png / etude12_beta_convergence.png / etude12_sigma_convergence.png
+        │   ├── etude12_convergence_mk.csv
+        │   └── rapport_etude12_convergence_pays.md
+        │
+        ├── etude13_bot_vulnerabilite/   # Trafic bot vs indicateurs sécurité
+        │   ├── etude13_bot_vulnerabilite.py
+        │   ├── etude13_bot_scatter.png / etude13_bot_classement.png / etude13_bot_timeseries.png
+        │   ├── etude13_bot_pays.csv
+        │   └── rapport_etude13_bot_vulnerabilite.md
+        │
+        ├── etude14_os_legacy/           # OS legacy vs sécurité
+        │   ├── etude14_os_legacy.py
+        │   ├── etude14_os_corr_heatmap.png / etude14_os_timeseries.png / etude14_windows_tls.png
+        │   ├── etude14_os_pays.csv
+        │   └── rapport_etude14_os_legacy.md
+        │
+        ├── etude15_saisonnalite_spectrale/  # FFT + décomposition STL
+        │   ├── etude15_saisonnalite_spectrale.py
+        │   ├── etude15_fft_spectres.png / etude15_series_tendance.png / etude15_residus_saisonniers.png
+        │   └── rapport_etude15_saisonnalite_spectrale.md
+        │
+        ├── etude16_secteurs_l7/         # Secteurs ciblés attaques L7
+        │   ├── etude16_secteurs_l7.py
+        │   ├── etude16_l7_secteurs_stacked.png / etude16_l7_secteurs_series.png
+        │   ├── etude16_l7_methodes.png / etude16_l7_barplot.png
+        │   └── rapport_etude16_secteurs_l7.md
+        │
+        ├── etude17_paradoxe_resilience/ # Régression IExC ~ IEC + contrôles
+        │   ├── etude17_paradoxe_resilience.py
+        │   ├── etude17_paradoxe_iec_iexc.png / etude17_regression_iec_iexc.png / etude17_ols_coefficients.png
+        │   └── rapport_etude17_paradoxe_resilience.md
+        │
+        └── etude18_mobile_desktop/      # Fracture mobile vs desktop
+            ├── etude18_mobile_desktop.py
+            ├── etude18_mobile_scatter.png / etude18_mobile_boxplot.png / etude18_mobile_top20.png
+            ├── etude18_mobile_pays.csv
+            └── rapport_etude18_mobile_desktop.md
 ```
 
 ---
