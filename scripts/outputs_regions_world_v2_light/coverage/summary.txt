@@ -1,0 +1,17 @@
+Cloudflare Radar ADM1 coverage audit
+====================================
+
+Période testée:
+  2025-09-29T00:00:00Z -> 2026-04-10T00:00:00Z
+
+Pays testés:
+  4
+
+Pays avec données ADM1:
+  0
+
+Pays sans données ADM1:
+  4
+
+Couverture (%):
+  0.0%

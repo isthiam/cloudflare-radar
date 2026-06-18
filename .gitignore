@@ -30,6 +30,7 @@ scripts/outputs_complet/package.json
 *.swo
 Thumbs.db
 .DS_Store
+~$*
 
 # === Logs et journaux de session ===
 scripts/outputs_complet/journal_session.md

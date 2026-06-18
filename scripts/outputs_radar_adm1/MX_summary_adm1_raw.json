@@ -1,0 +1,48 @@
+{
+  "success": true,
+  "errors": [],
+  "result": {
+    "summary_0": {
+      "3514780": "3.285993",
+      "3520914": "5.340536",
+      "3521082": "4.011068",
+      "3522542": "8.570411",
+      "3523272": "5.794573",
+      "3527646": "26.857902",
+      "4004156": "8.088649",
+      "4005267": "3.479759",
+      "4017700": "3.960302",
+      "other": "30.610808"
+    },
+    "meta": {
+      "dateRange": [
+        {
+          "startTime": "2025-09-29T00:00:00Z",
+          "endTime": "2026-03-23T00:00:00Z"
+        }
+      ],
+      "confidenceInfo": {
+        "level": null,
+        "annotations": [
+          {
+            "dataSource": "ALL",
+            "startDate": "2025-11-18T11:48:00Z",
+            "endDate": "2025-11-18T14:42:00Z",
+            "eventType": "GENERAL",
+            "description": "Global service degradation",
+            "linkedUrl": "https://www.cloudflarestatus.com/incidents/8gmgl950y3h7",
+            "isInstantaneous": false
+          }
+        ]
+      },
+      "normalization": "PERCENTAGE",
+      "lastUpdated": "2026-03-24T13:15:00Z",
+      "units": [
+        {
+          "name": "*",
+          "value": "requests"
+        }
+      ]
+    }
+  }
+}

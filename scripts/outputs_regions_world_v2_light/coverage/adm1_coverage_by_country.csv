@@ -1,0 +1,5 @@
+iso3,iso2,has_data,rows,status_code,probe_start,probe_end,note
+MEX,MX,False,0,200,2025-09-29T00:00:00Z,2026-04-10T00:00:00Z,no_adm1_data
+FRA,FR,False,0,200,2025-09-29T00:00:00Z,2026-04-10T00:00:00Z,no_adm1_data
+USA,US,False,0,200,2025-09-29T00:00:00Z,2026-04-10T00:00:00Z,no_adm1_data
+IND,IN,False,0,200,2025-09-29T00:00:00Z,2026-04-10T00:00:00Z,no_adm1_data
