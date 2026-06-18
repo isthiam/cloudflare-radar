@@ -1,6 +1,0 @@
-country_alpha2,country,startDate,endDate,scope,eventType,outage.outageCause,outage.outageType,linkedUrl
-KE,KEN,2025-12-09 16:15:00+00:00,2025-12-09 20:00:00+00:00,"Kiambu County, Nakuru County",OUTAGE,POWER_OUTAGE,REGIONAL,https://www.tuko.co.ke/kenya/612181-kenya-power-reveals-7-pm-nationwide-blackout-multiple-regions/
-DO,DOM,2025-12-09 16:15:00+00:00,2025-12-09 19:30:00+00:00,Claro Dominicana,OUTAGE,CABLE_CUT,NETWORK,https://x.com/ClaroRD/status/1998468046311002183
-BJ,BEN,2025-12-07 17:30:00+00:00,2025-12-07 18:30:00+00:00,Benin Telecoms,OUTAGE,UNKNOWN,NATIONWIDE,https://bsky.app/profile/radar.cloudflare.com/post/3m7gjaqctn32j
-ID,IDN,2025-11-25 22:00:47+00:00,,Aceh and Sumatra,OUTAGE,WEATHER,REGIONAL,https://x.com/CloudflareRadar/status/1996233525989720083?s=20
-HT,HTI,2025-11-25 07:00:00+00:00,2025-11-25 13:00:00+00:00,Digicel Haiti,OUTAGE,CABLE_CUT,NETWORK,https://bsky.app/profile/radar.cloudflare.com/post/3m6hehqck6d2q

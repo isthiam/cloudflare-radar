@@ -1,3 +1,0 @@
-﻿country_code,country_name,error
-BI,Burundi,"HTTP 404 | url=https://api.cloudflare.com/client/v4/radar/geolocations/428218?format=JSON | payload={""errors"": [{""code"": 7003, ""message"": ""Not Found""}], ""success"": false, ""result"": {}}"
-VN,Vietnam,"HTTP 404 | url=https://api.cloudflare.com/client/v4/radar/geolocations/1559970?format=JSON | payload={""errors"": [{""code"": 7003, ""message"": ""Not Found""}], ""success"": false, ""result"": {}}"

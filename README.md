@@ -31,187 +31,103 @@
 cloudflare-radar/
 │
 ├── .gitignore
-├── LICENSE                          # ODC-By 1.0
+├── LICENSE                              # ODC-By 1.0
 ├── README.md
 ├── requirements.txt
 │
 └── scripts/
     │
-    ├── radar_complet_download.py    # ← Script principal de collecte (API v4)
+    ├── radar_complet_download.py        # Script de collecte Cloudflare Radar API v4
     │
-    ├── outputs_complet/             # ════ ANALYSE PRINCIPALE ════
-    │   │
-    │   ├── ── Phases d'analyse A→L ──────────────────────────────
-    │   ├── phase_A_preparation.py       # Collecte et nettoyage des données
-    │   ├── phase_B_descriptif.py        # Statistiques descriptives
-    │   ├── phase_C_temporel.py          # Analyse temporelle (Mann-Kendall, ADF)
-    │   ├── phase_D_geographique.py      # Analyse géographique par pays
-    │   ├── phase_E_attaques.py          # Analyse des attaques L3/L7
-    │   ├── phase_F_email.py             # Sécurité email (DMARC/DKIM/SPF)
-    │   ├── phase_G_bgp.py               # BGP hijacking et leaks
-    │   ├── phase_H_correlations.py      # Corrélations et causalité de Granger
-    │   ├── phase_I_clustering.py        # Clustering pays (k-Means)
-    │   ├── phase_J_anomalies.py         # Détection d'anomalies
-    │   ├── phase_K_network.py           # Analyse réseau (graphes ASN)
-    │   ├── phase_L_synthese.py          # Synthèse finale
-    │   │
-    │   ├── rapport_phase_A.md → rapport_phase_L_synthese.md   # 12 rapports phases
-    │   │
-    │   ├── ── Études thématiques ────────────────────────────────
-    │   ├── etude1_geopolitique.py       # Disparités régionales TLS/IPv6
-    │   ├── etude2_prediction.py         # Prédiction ARIMA ISE/IMP/IVC
-    │   ├── etude3_weekends.py           # Rythmes temporels des attaques
-    │   ├── etude4_cascade.py            # Effet cascade email→BGP (Granger)
-    │   ├── etude5_cve.py                # CVE critiques NVD vs BGP
-    │   ├── etude6_cisa.py               # CISA KEV (254 vulnérabilités)
-    │   ├── etude7_browsers.py           # Impact navigateurs sur protocoles
-    │   ├── etude8_inegalites.py         # Fracture numérique mondiale
-    │   ├── etude9_clustering.py         # Clustering k-Means (252 pays)
-    │   ├── etude10_iqi_proxy.py         # IQI proxy économique (PIB/hab)
-    │   ├── etude11_vulnerabilite_pays.py # IEC/IExC — Exposition vs Expérience
-    │   │
-    │   ├── rapport_etude1_geopolitique.md/.docx
-    │   ├── rapport_etude2_prediction.md/.docx
-    │   ├── rapport_etude3_weekends.md/.docx
-    │   ├── rapport_etude4_cascade.md/.docx
-    │   ├── rapport_etude5_cve.md/.docx
-    │   ├── rapport_etude6_cisa.md/.docx
-    │   ├── rapport_etude7_browsers.md/.docx
-    │   ├── rapport_etude8_inegalites.md/.docx
-    │   ├── rapport_etude9_clustering.md/.docx
-    │   ├── rapport_etude10_iqi_proxy.md/.docx
-    │   ├── rapport_etude11_vulnerabilite_pays.md
-    │   │
-    │   ├── ── Rapports de synthèse ──────────────────────────────
-    │   ├── rapport_synthese_10etudes.md/.docx   # ← SYNTHÈSE PRINCIPALE
-    │   ├── rapport_academique.md/.docx/.pdf     # Rapport académique complet
-    │   ├── doc_technique_indices.md/.docx/.pdf  # Documentation ISE, IMP, IVC
-    │   ├── analyse_statistique_proposition.md   # Proposition initiale d'analyse
-    │   │
-    │   ├── ── Figures générées ──────────────────────────────────
-    │   ├── etude1_regions_boxplot.png    etude1_heatmap.png
-    │   ├── etude2_forecast.png
-    │   ├── etude3_boxplot.png            etude3_timeline.png
-    │   ├── etude4_cascade.png
-    │   ├── etude5_cve_vs_bgp.png         etude5_correlation_lags.png
-    │   ├── etude6_kev_timeline.png       etude6_vendors.png
-    │   ├── etude7_tls_timeline.png       etude7_http3_browsers.png
-    │   ├── etude8_scatter_gdp_tls.png    etude8_boxplot_income.png
-    │   ├── etude9_pca.png                etude9_elbow.png
-    │   ├── etude10_scatter_iqi_gdp.png
-    │   ├── etude11_heatmap_iec.png       etude11_heatmap_iexc.png
-    │   ├── etude11_scatter_iec_iexc.png  etude11_series_globales.png
-    │   │
-    │   ├── ── Données nettoyées (25 CSV) ────────────────────────
-    │   ├── cleaned/
-    │   │   ├── attacks_l3_bitrate_clean.csv
-    │   │   ├── attacks_l3_ip_version_clean.csv
-    │   │   ├── attacks_l3_protocol_clean.csv
-    │   │   ├── attacks_l7_http_method_clean.csv
-    │   │   ├── attacks_l7_http_version_clean.csv
-    │   │   ├── attacks_l7_vertical_clean.csv
-    │   │   ├── bgp_hijacks_clean.csv
-    │   │   ├── bgp_leaks_clean.csv
-    │   │   ├── bgp_timeseries_clean.csv
-    │   │   ├── dns_timeseries_clean.csv
-    │   │   ├── email_dkim_clean.csv
-    │   │   ├── email_dmarc_clean.csv
-    │   │   ├── email_malicious_clean.csv
-    │   │   ├── email_spam_clean.csv
-    │   │   ├── email_spf_clean.csv
-    │   │   ├── email_spoof_clean.csv
-    │   │   ├── http_bot_class_clean.csv
-    │   │   ├── http_browser_family_clean.csv
-    │   │   ├── http_device_type_clean.csv
-    │   │   ├── http_http_version_clean.csv
-    │   │   ├── http_ip_version_clean.csv
-    │   │   ├── http_os_clean.csv
-    │   │   ├── http_tls_version_clean.csv
-    │   │   ├── iqi_bandwidth_clean.csv
-    │   │   └── iqi_dns_clean.csv
-    │   │
-    │   ├── ── Données brutes par thème ──────────────────────────
-    │   ├── attacks_l3/                   # Attaques L3 (bitrate, protocole, IP version)
-    │   ├── attacks_l7/                   # Attaques L7 (méthode HTTP, vertical, version)
-    │   ├── bgp/                          # BGP (timeseries, hijacks, leaks)
-    │   ├── dns/                          # DNS timeseries
-    │   ├── email/                        # Email (DMARC/DKIM/SPF/spam/spoof/malicious)
-    │   ├── http/                         # HTTP par pays (TLS, IPv6, HTTP/3, OS…)
-    │   ├── iqi/                          # IQI par pays (bande passante, latence DNS)
-    │   │
-    │   └── etude11_pays_semaine_vulnerabilite.csv  # Données IEC/IExC pays × semaine
-    │
-    ├── ── Scripts de collecte ───────────────────────────────────
-    ├── radar_donnees_brutes_4ans.py          # Collecte 4 ans de données brutes
-    ├── radar_vulnerabilite_4ans_multithread.py
-    ├── radar_full_7piliers.py                # 7 piliers de sécurité
-    ├── radar_attacks_l3_daily_by_country.py
-    ├── radar_attacks_l3_daily_bytes_by_country.py
-    ├── radar_attacks_l3_daily_value_by_country.py
-    ├── radar_attacks_l3_stable.py
-    ├── radar_iqi_outages_by_country_stable.py
-    ├── radar_iqi_outages_stable.py
-    ├── radar_l3_bytes_daily_world_5y.py
-    ├── radar_http_adm1_world_v2_light.py     # Données ADM1 sous-nationales
-    ├── radar_http_adm1_world_robust.ipynb
-    │
-    ├── ── Scripts d'analyse exploratoire ───────────────────────
-    ├── analyze_hurst_ipv4_daily_multicountry.py
-    ├── analyze_hurst_layer3_bytes_daily.py
-    ├── radar_hurst_multicountry.py           # Exposant de Hurst (mémoire longue)
-    ├── simulate_and_analyze_alpha_h.py
-    ├── simulate_paper_processes.py
-    ├── verifier_hypotheses.py
-    ├── verifier_hypotheses_FRA_niveau.py
-    ├── pilier1.py
-    ├── programme01.py
-    ├── programme02_export_excel.py
-    ├── programme03_vulnerability.py
-    ├── cinq_pays.py
-    ├── date.py
-    ├── fix_l7.py
-    ├── hurst.py
-    ├── make_graphs_radar_layer3_bytes.py
-    │
-    ├── ── Données ADM1 sous-nationales ─────────────────────────
-    ├── radar_adm1_timeseries_all_countries.csv      # ~82 MB
-    ├── radar_adm1_timeseries_all_countries_async.csv # ~86 MB
-    ├── radar_adm1_geolocations_cache.csv
-    ├── radar_adm1_geolocations_cache_async.csv
-    ├── radar_adm1_missing_geolocations_async.csv
-    ├── radar_adm1_timeseries_errors.csv
-    ├── radar_adm1_timeseries_errors_async.csv
-    ├── radar_adm1_timeseries_meta.csv
-    ├── radar_adm1_timeseries_meta_async.csv
-    ├── cloudflare_radar_adm1_all_countries_3_metrics.csv
-    ├── cloudflare_radar_adm1_errors.csv
-    ├── radar_adm1_analysis.xlsx
-    ├── outputs_radar_adm1/                   # Données brutes ADM1 (JSON)
-    ├── outputs_regions_world/                # Couverture ADM1 mondiale v1
-    ├── outputs_regions_world_v2_light/       # Couverture ADM1 mondiale v2
-    │
-    ├── ── Données outages et piliers ───────────────────────────
-    ├── radar_api_v4_outages.csv/.xlsx
-    ├── radar_outages_events_by_country_52w.csv
-    ├── radar_outages_events_global_52w.csv
-    ├── radar_iqi_latency_by_country_52w.csv
-    ├── radar_iqi_latency_global_52w.csv
-    ├── radar_attacks_l3_ip_version_by_country.csv
-    ├── radar_attacks_l3_ip_version_global.csv
-    ├── vulnerability_index.csv
-    ├── radar_piliers_data/                   # 7 piliers (JSON + Excel)
-    │
-    └── Archive/                             # Fichiers de collecte initiaux
-        ├── radar_api_donnees_brutes_global.csv
-        ├── radar_api_v4_donnees_brutes.csv
-        └── radar_attacks_l3_ip_version.csv
+    └── outputs_complet/                 # ════ ANALYSE PRINCIPALE ════
+        │
+        ├── ── Phases d'analyse A→L ──────────────────────────────────
+        ├── phase_A_preparation.py           # Collecte et nettoyage des données
+        ├── phase_B_descriptif.py            # Statistiques descriptives
+        ├── phase_C_temporel.py              # Analyse temporelle (Mann-Kendall, ADF)
+        ├── phase_D_geographique.py          # Analyse géographique (252 pays)
+        ├── phase_E_attaques.py              # Attaques L3/L7
+        ├── phase_F_email.py                 # Sécurité email (DMARC/DKIM/SPF)
+        ├── phase_G_bgp.py                   # BGP hijacking et leaks
+        ├── phase_H_correlations.py          # Corrélations et causalité de Granger
+        ├── phase_I_clustering.py            # Clustering pays (k-Means)
+        ├── phase_J_anomalies.py             # Détection d'anomalies
+        ├── phase_K_network.py               # Analyse réseau (graphes ASN)
+        ├── phase_L_synthese.py              # Synthèse finale
+        ├── rapport_phase_[A-L].md           # 12 rapports de phases
+        │
+        ├── ── Études thématiques 1→11 ───────────────────────────────
+        ├── etude1_geopolitique.py           # Disparités régionales TLS/IPv6
+        ├── etude2_prediction.py             # Prédiction ARIMA ISE/IMP/IVC
+        ├── etude3_weekends.py               # Rythmes temporels des attaques
+        ├── etude4_cascade.py                # Effet cascade email→BGP (Granger)
+        ├── etude5_cve.py                    # CVE critiques NVD vs BGP
+        ├── etude6_cisa.py                   # CISA KEV (254 vulnérabilités)
+        ├── etude7_browsers.py               # Impact navigateurs sur protocoles
+        ├── etude8_inegalites.py             # Fracture numérique mondiale
+        ├── etude9_clustering.py             # Clustering k-Means (252 pays)
+        ├── etude10_iqi_proxy.py             # IQI proxy économique (PIB/hab)
+        ├── etude11_vulnerabilite_pays.py    # IEC/IExC — Exposition vs Expérience
+        ├── rapport_etude[1-11]_*.md/.docx   # 11 rapports d'études
+        │
+        ├── ── Rapports de synthèse ──────────────────────────────────
+        ├── rapport_synthese_10etudes.md/.docx   # ← SYNTHÈSE PRINCIPALE (4 500 mots)
+        ├── rapport_academique.md/.docx/.pdf     # Rapport académique complet
+        ├── doc_technique_indices.md/.docx/.pdf  # Documentation ISE, IMP, IVC
+        │
+        ├── ── Figures (22 PNG) ──────────────────────────────────────
+        ├── etude1_regions_boxplot.png / etude1_heatmap.png
+        ├── etude2_forecast.png
+        ├── etude3_boxplot.png / etude3_timeline.png
+        ├── etude4_cascade.png
+        ├── etude5_cve_vs_bgp.png / etude5_correlation_lags.png
+        ├── etude6_kev_timeline.png / etude6_vendors.png
+        ├── etude7_tls_timeline.png / etude7_http3_browsers.png
+        ├── etude8_scatter_gdp_tls.png / etude8_boxplot_income.png
+        ├── etude9_pca.png / etude9_elbow.png
+        ├── etude10_scatter_iqi_gdp.png
+        ├── etude11_heatmap_iec.png / etude11_heatmap_iexc.png
+        ├── etude11_scatter_iec_iexc.png / etude11_series_globales.png
+        │
+        ├── ── Données nettoyées (25 CSV) ────────────────────────────
+        ├── cleaned/
+        │   ├── attacks_l3_bitrate_clean.csv
+        │   ├── attacks_l3_ip_version_clean.csv
+        │   ├── attacks_l3_protocol_clean.csv
+        │   ├── attacks_l7_http_method_clean.csv
+        │   ├── attacks_l7_http_version_clean.csv
+        │   ├── attacks_l7_vertical_clean.csv
+        │   ├── bgp_hijacks_clean.csv
+        │   ├── bgp_leaks_clean.csv
+        │   ├── bgp_timeseries_clean.csv
+        │   ├── dns_timeseries_clean.csv
+        │   ├── email_dkim_clean.csv / email_dmarc_clean.csv
+        │   ├── email_malicious_clean.csv / email_spam_clean.csv
+        │   ├── email_spf_clean.csv / email_spoof_clean.csv
+        │   ├── http_bot_class_clean.csv / http_browser_family_clean.csv
+        │   ├── http_device_type_clean.csv / http_http_version_clean.csv
+        │   ├── http_ip_version_clean.csv / http_os_clean.csv
+        │   ├── http_tls_version_clean.csv
+        │   ├── iqi_bandwidth_clean.csv
+        │   └── iqi_dns_clean.csv
+        │
+        ├── ── Données brutes par thème ──────────────────────────────
+        ├── attacks_l3/   # Bitrate, protocole, IP version (3 CSV)
+        ├── attacks_l7/   # Méthode HTTP, vertical, version HTTP (3 CSV)
+        ├── bgp/          # Timeseries, hijacks, leaks (3 CSV)
+        ├── dns/          # DNS timeseries (1 CSV)
+        ├── email/        # DMARC/DKIM/SPF/spam/spoof/malicious (6 CSV)
+        ├── http/         # TLS, IPv6, HTTP/3, OS, navigateurs… (7 CSV, 252 pays)
+        ├── iqi/          # Bande passante et latence DNS (2 CSV, 252 pays)
+        │
+        └── etude11_pays_semaine_vulnerabilite.csv  # IEC/IExC pays × semaine
 ```
 
 ---
 
 ## Données
 
-Les données proviennent de l'**API Cloudflare Radar v4** (accès libre) et couvrent :
+Les données proviennent de l'**API Cloudflare Radar v4** (accès libre) :
 
 | Source | Variables | Couverture |
 |--------|-----------|------------|
@@ -221,31 +137,27 @@ Les données proviennent de l'**API Cloudflare Radar v4** (accès libre) et couv
 | IQI | Bande passante (p25/p50/p75), latence DNS | 252 pays, hebdomadaire |
 | Attaques L3 | Débit, protocole, version IP | Mondiale, hebdomadaire |
 | Attaques L7 | Secteur cible, méthode HTTP | Mondiale, quotidienne |
-| ADM1 | HTTP/IQI au niveau sous-national | Mondial, hebdomadaire |
 
 **Sources externes croisées :**
-- [Banque Mondiale API](https://data.worldbank.org/indicator/NY.GDP.PCAP.CD) — PIB/habitant, classification des revenus
-- [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) — 254 vulnérabilités activement exploitées
+- [Banque Mondiale API](https://data.worldbank.org/indicator/NY.GDP.PCAP.CD) — PIB/habitant
+- [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) — 254 vulnérabilités exploitées
 - [NVD NIST](https://nvd.nist.gov/) — CVE critiques (CVSS v3 ≥ 9,0)
 
 ---
 
-## Installation et utilisation
+## Installation
 
 ```bash
-# Cloner le dépôt
 git clone https://github.com/isthiam/cloudflare-radar.git
 cd cloudflare-radar
-
-# Installer les dépendances Python
 pip install -r requirements.txt
 
-# Exécuter une étude (exemple : Étude 11 — IEC/IExC)
+# Exécuter une étude
 cd scripts/outputs_complet
 python etude11_vulnerabilite_pays.py
 ```
 
-> **Note :** Pour collecter de nouvelles données Cloudflare Radar, vous aurez besoin d'une clé API gratuite obtenue sur [dash.cloudflare.com](https://dash.cloudflare.com/profile/api-tokens). Stockez-la dans un fichier `.env` (non versionné).
+> Pour collecter de nouvelles données, stocker la clé API Cloudflare Radar dans un fichier `.env` (non versionné).
 
 ---
 
@@ -263,25 +175,12 @@ python etude11_vulnerabilite_pays.py
 
 ## Méthodes statistiques
 
-- **Séries temporelles** : ARIMA (sélection AIC), Mann-Kendall, ADF (stationnarité)
-- **Causalité** : Test de Granger, cross-corrélation, corrélation de Pearson/Spearman
+- **Séries temporelles** : ARIMA (AIC), Mann-Kendall, ADF
+- **Causalité** : Granger, cross-corrélation, Pearson/Spearman
 - **Tests non paramétriques** : Mann-Whitney U, Kruskal-Wallis, Cohen d
-- **Apprentissage non supervisé** : k-Means (sélection silhouette), ACP (PCA)
-- **Économétrie spatiale** : Régression log-log PIB/IQI, corrélations transnationales
+- **Apprentissage non supervisé** : k-Means (silhouette), ACP (PCA)
+- **Économétrie** : Régression log-log PIB/IQI, corrélations transnationales
 - **Event study** : Fenêtres pré/post release navigateurs
-- **Mémoire longue** : Exposant de Hurst (ADM1, L3 bytes)
-
----
-
-## Rapports disponibles
-
-| Document | Format | Description |
-|----------|--------|-------------|
-| [`rapport_synthese_10etudes.md`](scripts/outputs_complet/rapport_synthese_10etudes.md) | Markdown | **Synthèse principale — 10 études, 4 500 mots** |
-| [`rapport_academique.md`](scripts/outputs_complet/rapport_academique.md) | Markdown/DOCX/PDF | Rapport académique complet |
-| [`doc_technique_indices.md`](scripts/outputs_complet/doc_technique_indices.md) | Markdown/DOCX/PDF | Documentation ISE, IMP, IVC |
-| `rapport_etude[1-11]_*.md` | Markdown + DOCX | 11 rapports d'études individuels |
-| `rapport_phase_[A-L].md` | Markdown | 12 rapports de phases analytiques |
 
 ---
 
@@ -303,11 +202,10 @@ python etude11_vulnerabilite_pays.py
 
 Ce projet est distribué sous licence **[Open Data Commons Attribution License (ODC-By) v1.0](https://opendatacommons.org/licenses/by/1-0/)**.
 
-Vous êtes libre de partager, modifier et utiliser les données et analyses, à condition de citer la source :
-
+Attribution requise :
 > "Contains information from *Cloudflare Radar Security Dataset 2025–2026* by Issakha Thiam, available under ODC-By 1.0 — https://opendatacommons.org/licenses/by/1-0/"
 
-Les données Cloudflare Radar sont également soumises aux [Conditions d'utilisation de Cloudflare](https://www.cloudflare.com/terms/).
+Les données Cloudflare Radar sont soumises aux [Conditions d'utilisation de Cloudflare](https://www.cloudflare.com/terms/).
 
 ---
 
