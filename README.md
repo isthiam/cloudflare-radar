@@ -1,6 +1,6 @@
 # Sécurité Internet Mondiale 2025–2026 — Analyse Cloudflare Radar
 
-> **Analyse empirique multidimensionnelle de la sécurité internet mondiale à partir des données Cloudflare Radar API v4 — 11 études, 252 pays, 53 semaines.**
+> **Analyse empirique multidimensionnelle de la sécurité internet mondiale à partir des données Cloudflare Radar API v4 — 18 études, 252 pays, 53 semaines.**
 
 **Auteur :** Issakha Thiam · [Issakha.THIAM@uca.fr](mailto:Issakha.THIAM@uca.fr)  
 **Période :** Juin 2025 – Juin 2026
@@ -22,6 +22,13 @@
 | 9 | Clustering | 2 clusters : 56 pays « avancés » vs 138 « intermédiaires » |
 | 10 | IQI proxy | **IQI prédit le PIB/hab avec ρ=0,789 et R²=0,618** |
 | 11 | IEC/IExC | **Exposition et expérience quasi-indépendantes** (ρ=0,020) — 252 pays × 53 semaines |
+| 12 | Convergence pays | β-convergence confirmée (TLS 1.3 β=−0,804) ; les pays en retard rattrapent les leaders |
+| 13 | Bot vs vulnérabilité | HTTP/3 ↔ bots (ρ=−0,615) ; TLS 1.3 attire bots (ρ=+0,337) — paradoxe de ciblage |
+| 14 | OS legacy | Android → moins IPv6/BW (ρ=−0,311/−0,577) ; macOS → meilleures performances |
+| 15 | Saisonnalité spectrale | BGP routes : cycle dominant 13,2 sem ; autres indicateurs : tendance longue (53 sem) |
+| 16 | Secteurs L7 | Internet/Télécom en forte hausse (MK z=+6,80) ; Finance en forte baisse (z=−6,05) |
+| 17 | Paradoxe résilience | R²=0,010 — vulnérabilité structurelle **n'explique pas** les chocs réalisés |
+| 18 | Fracture mobile | Mobile → moins IPv6 (ρ=−0,261), moins BW (ρ=−0,531) ; Kruskal-Wallis p<0,0001 |
 
 ---
 
@@ -68,14 +75,21 @@ cloudflare-radar/
         ├── etude9_clustering.py             # Clustering k-Means (252 pays)
         ├── etude10_iqi_proxy.py             # IQI proxy économique (PIB/hab)
         ├── etude11_vulnerabilite_pays.py    # IEC/IExC — Exposition vs Expérience
-        ├── rapport_etude[1-11]_*.md/.docx   # 11 rapports d'études
+        ├── etude12_convergence_pays.py      # β/σ-convergence Mann-Kendall
+        ├── etude13_bot_vulnerabilite.py     # Trafic bot vs indicateurs sécurité
+        ├── etude14_os_legacy.py             # OS legacy (Windows/Android) vs sécurité
+        ├── etude15_saisonnalite_spectrale.py # FFT + décomposition STL
+        ├── etude16_secteurs_l7.py           # Secteurs ciblés attaques L7
+        ├── etude17_paradoxe_resilience.py   # Régression IExC ~ IEC + contrôles
+        ├── etude18_mobile_desktop.py        # Fracture mobile vs desktop
+        ├── rapport_etude[1-18]_*.md         # 18 rapports d'études
         │
         ├── ── Rapports de synthèse ──────────────────────────────────
         ├── rapport_synthese_10etudes.md/.docx   # ← SYNTHÈSE PRINCIPALE (4 500 mots)
         ├── rapport_academique.md/.docx/.pdf     # Rapport académique complet
         ├── doc_technique_indices.md/.docx/.pdf  # Documentation ISE, IMP, IVC
         │
-        ├── ── Figures (22 PNG) ──────────────────────────────────────
+        ├── ── Figures (44 PNG) ──────────────────────────────────────
         ├── etude1_regions_boxplot.png / etude1_heatmap.png
         ├── etude2_forecast.png
         ├── etude3_boxplot.png / etude3_timeline.png
@@ -88,6 +102,14 @@ cloudflare-radar/
         ├── etude10_scatter_iqi_gdp.png
         ├── etude11_heatmap_iec.png / etude11_heatmap_iexc.png
         ├── etude11_scatter_iec_iexc.png / etude11_series_globales.png
+        ├── etude12_mk_tendances.png / etude12_beta_convergence.png / etude12_sigma_convergence.png
+        ├── etude13_bot_scatter.png / etude13_bot_classement.png / etude13_bot_timeseries.png
+        ├── etude14_os_corr_heatmap.png / etude14_os_timeseries.png / etude14_windows_tls.png
+        ├── etude15_fft_spectres.png / etude15_series_tendance.png / etude15_residus_saisonniers.png
+        ├── etude16_l7_secteurs_stacked.png / etude16_l7_secteurs_series.png
+        ├── etude16_l7_methodes.png / etude16_l7_barplot.png
+        ├── etude17_paradoxe_iec_iexc.png / etude17_regression_iec_iexc.png / etude17_ols_coefficients.png
+        ├── etude18_mobile_scatter.png / etude18_mobile_boxplot.png / etude18_mobile_top20.png
         │
         ├── ── Données nettoyées (25 CSV) ────────────────────────────
         ├── cleaned/
@@ -120,7 +142,11 @@ cloudflare-radar/
         ├── http/         # TLS, IPv6, HTTP/3, OS, navigateurs… (7 CSV, 252 pays)
         ├── iqi/          # Bande passante et latence DNS (2 CSV, 252 pays)
         │
-        └── etude11_pays_semaine_vulnerabilite.csv  # IEC/IExC pays × semaine
+        ├── etude11_pays_semaine_vulnerabilite.csv  # IEC/IExC pays × semaine
+        ├── etude12_convergence_mk.csv              # Mann-Kendall tendances par pays
+        ├── etude13_bot_pays.csv                    # Ratio bot + sécurité par pays
+        ├── etude14_os_pays.csv                     # Parts OS + sécurité par pays
+        └── etude18_mobile_pays.csv                 # Ratio mobile + sécurité par pays
 ```
 
 ---
@@ -179,8 +205,10 @@ python etude11_vulnerabilite_pays.py
 - **Causalité** : Granger, cross-corrélation, Pearson/Spearman
 - **Tests non paramétriques** : Mann-Whitney U, Kruskal-Wallis, Cohen d
 - **Apprentissage non supervisé** : k-Means (silhouette), ACP (PCA)
-- **Économétrie** : Régression log-log PIB/IQI, corrélations transnationales
+- **Économétrie** : Régression log-log PIB/IQI, corrélations transnationales, OLS multiple
 - **Event study** : Fenêtres pré/post release navigateurs
+- **Analyse spectrale** : FFT (Transformée de Fourier), décomposition STL, MA(4)
+- **Convergence** : β-convergence (OLS cross-section), σ-convergence (écart-type mondial)
 
 ---
 
